@@ -1,6 +1,4 @@
-FROM --platform=${TARGETPLATFORM} carlesbarreda/php:8.0.3-fpm-alpine
-
-ARG TARGETPLATFORM
+FROM carlesbarreda/php:8.0.3-fpm-alpine
 
 RUN set -eux; \
 	version='5.6.2'; \
