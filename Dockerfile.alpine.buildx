@@ -1,4 +1,6 @@
-FROM --platform=${TARGETPLATFORM} carlesbarreda/php:7.4.16-fpm-alpine
+ARG VERSION
+ARG VARIANT
+FROM --platform=${TARGETPLATFORM} carlesbarreda/php:${VERSION}-${VARIANT}-alpine
 
 ARG TARGETPLATFORM
 

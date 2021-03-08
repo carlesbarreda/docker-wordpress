@@ -1,6 +1,10 @@
-FROM --platform=${TARGETPLATFORM} carlesbarreda/php:8.0.3-fpm-alpine
+ARG VERSION
+ARG VARIANT
+FROM --platform=${TARGETPLATFORM} carlesbarreda/php:${VERSION}-${VARIANT}-buster
 
 ARG TARGETPLATFORM
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN set -eux; \
 	version='5.6.2'; \
