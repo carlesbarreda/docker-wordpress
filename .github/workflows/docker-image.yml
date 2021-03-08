@@ -1,25 +1,9 @@
 name: Wordpress PHP 7.4 / 8.0 images CI
 
 on:
-
-#  push:
-#    branches: main
-
-#  workflow_dispatch:
-#    inputs:
-#      tags:
-#        description: 'Cerbot version tag'
-#        required: true
-#        default: 'v1.10.1'
-#      latest:
-#        description: 'Is latest?'
-#        required: true
-#        default: 'yes'
-
   workflow_dispatch:
 
 jobs:
-
   Buster74:
     name: "PHP 7.4 buster"
     runs-on: ubuntu-latest
