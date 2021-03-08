@@ -42,6 +42,7 @@ jobs:
             --push .
       - name: Build php:7.4-fpm-buster
         if: ${{ env.PHP74 != '' }}
+        run: |
           docker buildx build \
             --file Dockerfile.buster.buildx \
             --platform linux/amd64,linux/386,linux/arm64,linux/arm/v7 \
