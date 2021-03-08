@@ -39,6 +39,8 @@ jobs:
             --tag carlesbarreda/wordpress:php7.4-zts-buster \
             --build-arg VERSION=$PHP74 \
             --build-arg VARIANT=zts \
+            --progress=plain \
+            --no-cache \
             --push .
       - name: Build php:7.4-fpm-buster
         if: ${{ env.PHP74 != '' }}
@@ -50,6 +52,8 @@ jobs:
             --tag carlesbarreda/wordpress:php7.4-fpm-buster \
             --build-arg VERSION=$PHP74 \
             --build-arg VARIANT=fpm \
+            --progress=plain \
+            --no-cache \
             --push .
 
   Alpine74:
@@ -88,6 +92,8 @@ jobs:
             --tag carlesbarreda/wordpress:php7.4-zts \
             --build-arg VERSION=$PHP74 \
             --build-arg VARIANT=zts \
+            --progress=plain \
+            --no-cache \
             --push .
       - name: Build php:7.4-fpm-alpine
         if: ${{ env.PHP74 != '' }}
@@ -101,6 +107,8 @@ jobs:
             --tag carlesbarreda/wordpress:php7.4-fpm \
             --build-arg VERSION=$PHP74 \
             --build-arg VARIANT=fpm \
+            --progress=plain \
+            --no-cache \
             --push .
 
   Buster80:
@@ -137,6 +145,8 @@ jobs:
             --tag carlesbarreda/wordpress:php8.0-zts-buster \
             --build-arg VERSION=$PHP80 \
             --build-arg VARIANT=zts \
+            --progress=plain \
+            --no-cache \
             --push .
       - name: Build php:8.0-fpm-buster
         if: ${{ env.PHP80 != '' }}
@@ -148,6 +158,8 @@ jobs:
             --tag carlesbarreda/wordpress:php8.0-fpm-buster \
             --build-arg VERSION=$PHP80 \
             --build-arg VARIANT=fpm \
+            --progress=plain \
+            --no-cache \
             --push .
 
   # This is the last job
@@ -189,4 +201,6 @@ jobs:
             --tag carlesbarreda/wordpress:latest \
             --build-arg VERSION=$PHP80 \
             --build-arg VARIANT=fpm \
+            --progress=plain \
+            --no-cache \
             --push .
