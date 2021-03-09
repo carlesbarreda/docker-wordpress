@@ -113,6 +113,7 @@ jobs:
 
   Buster80:
     name: "PHP 8.0 buster"
+    needs: [Buster74, Alpine74]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -165,7 +166,7 @@ jobs:
   # This is the last job
   Alpine80:
     name: "PHP 8.0 alpine"
-    needs: [Buster74, Alpine74, Buster80]
+    needs: [Buster74, Alpine74]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
