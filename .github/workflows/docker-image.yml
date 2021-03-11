@@ -6,7 +6,7 @@ on:
 jobs:
   Buster74:
     name: "PHP 7.4 buster"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -29,19 +29,6 @@ jobs:
       # https://github.com/firepress-org/rclone-in-docker/blob/master/.github/workflows/ci_dockerfile_is_master.yml
       - name: Set env from file
         run: grep -e ^PHP74.*= .env.build >> $GITHUB_ENV
-      - name: Build php:7.4-zts-buster
-        if: ${{ env.PHP74 != '' }}
-        run: |
-          docker buildx build \
-            --file Dockerfile.buster \
-            --platform linux/amd64,linux/386,linux/arm64,linux/arm/v7 \
-            --tag carlesbarreda/wordpress:5.6.2-php7.4-zts-buster \
-            --tag carlesbarreda/wordpress:php7.4-zts-buster \
-            --build-arg VERSION=$PHP74 \
-            --build-arg VARIANT=zts \
-            --progress=plain \
-            --no-cache \
-            --push .
       - name: Build php:7.4-fpm-buster
         if: ${{ env.PHP74 != '' }}
         run: |
@@ -58,7 +45,7 @@ jobs:
 
   Alpine74:
     name: "PHP 7.4 alpine"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -80,21 +67,6 @@ jobs:
       # https://github.com/actions/starter-workflows/issues/68
       - name: Set env from file
         run: grep -e ^PHP74.*= .env.build >> $GITHUB_ENV
-      - name: Build php:7.4-zts-alpine
-        if: ${{ env.PHP74 != '' }}
-        run: |
-          docker buildx build \
-            --file Dockerfile.alpine \
-            --platform linux/amd64,linux/386,linux/arm64,linux/arm/v7 \
-            --tag carlesbarreda/wordpress:5.6.2-php7.4-zts-alpine \
-            --tag carlesbarreda/wordpress:5.6.2-php7.4-zts \
-            --tag carlesbarreda/wordpress:php7.4-zts-alpine \
-            --tag carlesbarreda/wordpress:php7.4-zts \
-            --build-arg VERSION=$PHP74 \
-            --build-arg VARIANT=zts \
-            --progress=plain \
-            --no-cache \
-            --push .
       - name: Build php:7.4-fpm-alpine
         if: ${{ env.PHP74 != '' }}
         run: |
@@ -113,7 +85,8 @@ jobs:
 
   Buster80:
     name: "PHP 8.0 buster"
-    runs-on: ubuntu-latest
+    needs: [Buster74]
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -135,19 +108,6 @@ jobs:
       # https://github.com/actions/starter-workflows/issues/68
       - name: Set env from file
         run: grep -e ^PHP80.*= .env.build >> $GITHUB_ENV
-      - name: Build php:8.0-zts-buster
-        if: ${{ env.PHP80 != '' }}
-        run: |
-          docker buildx build \
-            --file Dockerfile.buster \
-            --platform linux/amd64,linux/386,linux/arm64,linux/arm/v7 \
-            --tag carlesbarreda/wordpress:5.6.2-php8.0-zts-buster \
-            --tag carlesbarreda/wordpress:php8.0-zts-buster \
-            --build-arg VERSION=$PHP80 \
-            --build-arg VARIANT=zts \
-            --progress=plain \
-            --no-cache \
-            --push .
       - name: Build php:8.0-fpm-buster
         if: ${{ env.PHP80 != '' }}
         run: |
@@ -162,11 +122,10 @@ jobs:
             --no-cache \
             --push .
 
-  # This is the last job
   Alpine80:
     name: "PHP 8.0 alpine"
-    needs: [Buster74, Alpine74, Buster80]
-    runs-on: ubuntu-latest
+    needs: [Alpine74]
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
