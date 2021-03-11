@@ -48,6 +48,3 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["php-fpm"]
-
-#docker build -t carlesbarreda/wordpress:5.6.2-php7.4-fpm-alpine -f Dockerfile.wordpress-php7.4-fpm-alpine.buildx .
-#docker run -ti --rm --name wp7.4-fpm-dev carlesbarreda/wordpress:5.6.2-php7.4-fpm-alpine /bin/sh
