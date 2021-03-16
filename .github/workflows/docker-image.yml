@@ -20,12 +20,12 @@ jobs:
         with:
           dockerfile: Dockerfile
 
-      - name: Lint Dockerfile
+      - name: Lint Dockerfile.alpine
         uses: brpaz/hadolint-action@v1.2.1
         with:
           dockerfile: Dockerfile.alpine
 
-      - name: Lint Dockerfile
+      - name: Lint Dockerfile.buster
         uses: brpaz/hadolint-action@v1.2.1
         with:
           dockerfile: Dockerfile.buster
