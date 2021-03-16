@@ -15,20 +15,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      #- name: Lint Dockerfile
+      #  uses: brpaz/hadolint-action@v1.2.1
+      #  with:
+      #    dockerfile: Dockerfile
+
       - name: Lint Dockerfile
-        uses: brpaz/hadolint-action@v1.2.1
-        with:
-          dockerfile: Dockerfile
+        run: |
+          docker run --rm -i -v ${PWD}/.hadolint.yml:/root/.config/hadolint.yaml hadolint/hadolint Dockerfile
 
       - name: Lint Dockerfile.alpine
-        uses: brpaz/hadolint-action@v1.2.1
-        with:
-          dockerfile: Dockerfile.alpine
+        run: |
+          docker run --rm -i -v ${PWD}/.hadolint.yml:/root/.config/hadolint.yaml hadolint/hadolint Dockerfile.alpine
 
       - name: Lint Dockerfile.buster
-        uses: brpaz/hadolint-action@v1.2.1
-        with:
-          dockerfile: Dockerfile.buster
+        run: |
+          docker run --rm -i -v ${PWD}/.hadolint.yml:/root/.config/hadolint.yaml hadolint/hadolint Dockerfile.buster
 
   ScanBuster74:
     name: "Scan PHP 7.4 buster"
