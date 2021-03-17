@@ -137,7 +137,8 @@ jobs:
           path: /tmp/7.4-fpm-${{ matrix.os }}-${{ env.SUFFIX }}.tar
 
   Push74:
-    name: "Push Wordpress ${{ env.WP_VER }} PHP 7.4 ${{ matrix.os }}"
+    #name: "Push Wordpress ${{ env.WP_VER }} PHP 7.4 ${{ matrix.os }}"
+    name: "Push Wordpress PHP 7.4 ${{ matrix.os }}"
     runs-on: ubuntu-latest
     needs: [Build74]
     strategy:
@@ -319,7 +320,8 @@ jobs:
           path: /tmp/8.0-fpm-${{ matrix.os }}-${{ env.SUFFIX }}.tar
 
   Push80:
-    name: "Push Wordpress ${{ env.WP_VER }} PHP 8.0 ${{ matrix.os }}"
+    #name: "Push Wordpress ${{ env.WP_VER }} PHP 8.0 ${{ matrix.os }}"
+    name: "Push Wordpress PHP 8.0 ${{ matrix.os }}"
     runs-on: ubuntu-latest
     needs: [Build80]
     strategy:
