@@ -221,7 +221,8 @@ jobs:
             -H "Authorization: JWT ${TOKEN}"
 
   Build80:
-    name: "Build Wordpress ${{ env.WP_VER }} PHP 8.0 ${{ matrix.os }} (${{ matrix.platform }})"
+    #name: "Build Wordpress ${{ env.WP_VER }} PHP 8.0 ${{ matrix.os }} (${{ matrix.platform }})"
+    name: "Build Wordpress PHP 8.0 ${{ matrix.os }} (${{ matrix.platform }})"
     runs-on: ubuntu-latest
     needs: [Push74]
     strategy:
